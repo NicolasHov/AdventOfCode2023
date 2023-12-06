@@ -29,32 +29,18 @@ const getFewestCubes = (data) => {
     for (const iterator in data) {
         let maxRed = 0, maxGreen = 0, maxBlue = 0
         data[iterator].map(games => {
-            console.log(games);
             games
                 .map(game => {
                     let value = parseFloat(game.match(/\d+/)[0])
-                    console.log("--value", value);
                     game.includes('red') ? value > maxRed ? maxRed = value : null : null
-                    console.log("maxRed", maxRed);
-                    // console.log("gamematch:", value);
                     game.includes('green') ? value > maxGreen ? maxGreen = value : null : null
-                    console.log("maxGreen", maxGreen);
                     game.includes('blue') ? value > maxBlue ? maxBlue = value : null : null
-                    console.log("maxBlue", maxBlue);
-                    // console.log("blue:", value);
-
                 })
         })
-        // console.log(maxRed);
-        // console.log(maxGreen);
-        // console.log(maxBlue);
         listOfFewestNumbers.push(maxBlue * maxGreen * maxRed)
-        console.log("---------------------------");
     }
-    console.log(listOfFewestNumbers);
     return listOfFewestNumbers.reduce((acc, currVal) => acc + currVal, 0,);
 }
 
-
-console.log(getFewestCubes(inputObj))
-// console.log(getPossibleGames(inputObj)) // NB: we could have used a regex like this const regex = new RegExp(/(\d+) (red|blue|green)/g)
+// console.log(getPossibleGames(inputObj)) // Part1 -- NB: we could have used a regex like this const regex = new RegExp(/(\d+) (red|blue|green)/g)
+console.log(getFewestCubes(inputObj)) // Part2
